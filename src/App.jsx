@@ -21,6 +21,15 @@ function App() {
     })
   }
 
+  const handleSend = (e) => {
+    e.preventDefault()
+    axios.post(postEndpoint, formData)
+      .then((res) => {
+        console.log(res.data)
+        alert('Post creato')
+      })
+  }
+
   return (
     <>
       <header>
@@ -47,7 +56,7 @@ function App() {
               <label htmlFor="">Check to Public</label>
             </div>
           </div>
-          <button type='submit'>Submit</button>
+          <button type='submit' onClick={handleSend}>Submit</button>
         </form>
       </main>
     </>
