@@ -13,6 +13,14 @@ function App() {
     public: false,
   })
 
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target
+
+    setFormData({
+      ...formData, [name]: type === "checkbox" ? checked : value
+    })
+  }
+
   return (
     <>
       <header>
@@ -24,18 +32,18 @@ function App() {
           <div className="inputs-container">
             <div className='author-container'>
               <label htmlFor="">Author:</label>
-              <input type="text" name='author' value={formData.author} />
+              <input type="text" name='author' value={formData.author} onChange={handleChange} />
             </div>
             <div className='title-container'>
               <label htmlFor="">Title:</label>
-              <input type="text" name='title' value={formData.title} />
+              <input type="text" name='title' value={formData.title} onChange={handleChange} />
             </div>
             <div className='body-container'>
               <label htmlFor="">Body:</label>
-              <input type="text" name='body' value={formData.body} />
+              <input type="text" name='body' value={formData.body} onChange={handleChange} />
             </div>
             <div className='public-container'>
-              <input type="checkbox" name='public' checked={formData.public} />
+              <input type="checkbox" name='public' checked={formData.public} onChange={handleChange} />
               <label htmlFor="">Check to Public</label>
             </div>
           </div>
